@@ -20,8 +20,9 @@ this is great
 - Easy to customize
 - Demonstrates best practices
 
-![Solution Explorer](art/solution-explorer.png)
+Here's a screen shot of what the project template contains:
 
+![Solution Explorer](art/solution-explorer.png)
 
 ## Contribute
 Check out the [contribution guidelines](.github/CONTRIBUTING.md)
