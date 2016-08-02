@@ -2,9 +2,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/25cfkng5hc4s9sit?svg=true)](https://ci.appveyor.com/project/madskristensen/taskrunnertemplate)
 
-<!-- Update the VS Gallery link after you upload the VSIX-->
-Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/[GuidFromGallery])
-or get the [CI build](http://vsixgallery.com/extension/3f0e7a25-a178-46c6-b123-11006018f774/).
+Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/20e4307e-e167-4bb5-8e99-6c5e5ce457ba)
+or get the [CI build](http://vsixgallery.com/extension/e3f7a0d3-f521-4da8-8fa3-e3a07702328a/).
 
 ---------------------------------------
 
