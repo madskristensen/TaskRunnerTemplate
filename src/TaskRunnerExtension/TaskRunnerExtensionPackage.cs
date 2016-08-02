@@ -11,7 +11,6 @@ namespace TaskRunnerExtension
     {
         protected override void Initialize()
         {
-            Logger.Initialize(this, Vsix.Name);
             base.Initialize();
         }
     }

@@ -2,7 +2,7 @@
     <TemplateData>
         <Name>Task Runner Explorer Extension</Name>
         <Description>A project template for creating Task Runner Explorer extensions.</Description>
-        <DefaultName>MyExtension</DefaultName>
+        <DefaultName>VSIXProject</DefaultName>
 
         <ProjectType>CSharp</ProjectType>
         <ProjectSubType></ProjectSubType>
@@ -15,12 +15,13 @@
         <LocationField>Enabled</LocationField>
         <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
 
-        <Icon>_Definitions\template-icon.png</Icon>
         <TemplateID>taskrunnerextension</TemplateID>
         <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
     </TemplateData>
     <TemplateContent>
         <Project TargetFileName="$rootnamespace$.csproj" File="TaskRunnerExtension.csproj" ReplaceParameters="true">
+            <ProjectItem TargetFileName="$safeprojectname$Package.cs" ReplaceParameters="true">TaskRunnerExtensionPackage.cs</ProjectItem>
+            <ProjectItem TargetFileName="readme.html" OpenInWebBrowser="true">readme.html</ProjectItem>
         </Project>
     </TemplateContent>
 </VSTemplate>

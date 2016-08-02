@@ -5,10 +5,11 @@
   Add New Project / Add New Item dialog by setting the value below
   -->
     <TemplateInfo Path="CSharp\Extensibility"/>
-    <Replacements Include="*.*" Exclude="*.vstemplate;*.csproj;*.fsproj;*.vbproj;*.jpg;*.png;*.ico;_preprocess.xml;_project.vstemplate.xml">
+    <Replacements Include="*.*" Exclude="*.vstemplate;*.fsproj;*.vbproj;*.jpg;*.png;*.ico;_preprocess.xml;_project.vstemplate.xml">
         <add key="TaskRunnerExtension" value="$safeprojectname$"/>
         <add key="3f0e7a25-a178-46c6-b123-11006018f774" value="$guid1$"/>
         <add key="68f5ee87-8633-4f4c-8849-fdb6e22ef84a" value="$guid2$" />
         <add key="b13c1717-1c31-4be2-9798-7d734b9fd445" value="$guid3$" />
+        <add key="MyTaskRunnerPackage.cs" value="$safeprojectname$Package.cs" />
     </Replacements>
 </Preprocess>

@@ -8,24 +8,21 @@ or get the [CI build](http://vsixgallery.com/extension/3f0e7a25-a178-46c6-b123-1
 
 ---------------------------------------
 
-Empty VSIX Project.
+A project template for building Task Runner Explorer extensions for
+Visual Studio.
 
-See the [changelog](CHANGELOG.md) for changes and roadmap.
+See the [change log](CHANGELOG.md) for changes and road map.
 
 ## Features
 
-- Feature 1
-- Feature 2
-  - Sub feature
+this is great
 
-### Feature 1
-Describe feature 1. Add screenshots/code samples etc.
+- A great starting point
+- Easy to customize
+- Demonstrates best practices
 
-### Feature 2
-Describe feature 2. Add screenshots/code samples etc.
+![Solution Explorer](art/solution-explorer.png)
 
-#### Sub feature
-Describe sub feature. Add screenshots/code samples etc.
 
 ## Contribute
 Check out the [contribution guidelines](.github/CONTRIBUTING.md)

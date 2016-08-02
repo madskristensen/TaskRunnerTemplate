@@ -30,65 +30,6 @@ namespace TaskRunnerExtension
             info.IsReadOnly = false;
         }
 
-        public static IEnumerable<ProjectItem> GetSelectedItems()
-        {
-            var items = (Array)DTE.ToolWindows.SolutionExplorer.SelectedItems;
-
-            foreach (UIHierarchyItem selItem in items)
-            {
-                ProjectItem item = selItem.Object as ProjectItem;
-
-                if (item != null)
-                    yield return item;
-            }
-        }
-
-        public static IEnumerable<string> GetSelectedItemPaths()
-        {
-            foreach (ProjectItem item in GetSelectedItems())
-            {
-                if (item != null && item.Properties != null)
-                    yield return item.Properties.Item("FullPath").Value.ToString();
-            }
-        }
-
-        public static string GetRootFolder(this Project project)
-        {
-            if (string.IsNullOrEmpty(project.FullName))
-                return null;
-
-            string fullPath;
-
-            try
-            {
-                fullPath = project.Properties.Item("FullPath").Value as string;
-            }
-            catch (ArgumentException)
-            {
-                try
-                {
-                    // MFC projects don't have FullPath, and there seems to be no way to query existence
-                    fullPath = project.Properties.Item("ProjectDirectory").Value as string;
-                }
-                catch (ArgumentException)
-                {
-                    // Installer projects have a ProjectPath.
-                    fullPath = project.Properties.Item("ProjectPath").Value as string;
-                }
-            }
-
-            if (string.IsNullOrEmpty(fullPath))
-                return File.Exists(project.FullName) ? Path.GetDirectoryName(project.FullName) : null;
-
-            if (Directory.Exists(fullPath))
-                return fullPath;
-
-            if (File.Exists(fullPath))
-                return Path.GetDirectoryName(fullPath);
-
-            return null;
-        }
-
         public static void AddFileToProject(this Project project, string file, string itemType = null)
         {
             if (project.IsKind(ProjectTypes.ASPNET_5))
@@ -110,7 +51,7 @@ namespace TaskRunnerExtension
             }
             catch (Exception ex)
             {
-                Logger.Log(ex);
+                System.Diagnostics.Trace.Write(ex);
             }
         }
 
@@ -136,22 +77,13 @@ namespace TaskRunnerExtension
             }
             catch (Exception ex)
             {
-                Logger.Log(ex);
+                System.Diagnostics.Trace.Write(ex);
             }
         }
 
         public static bool IsKind(this Project project, string kindGuid)
         {
             return project.Kind.Equals(kindGuid, StringComparison.OrdinalIgnoreCase);
-        }
-
-        public static IEnumerable<Project> GetAllProjects()
-        {
-            return DTE.Solution.Projects
-                  .Cast<Project>()
-                  .SelectMany(GetChildProjects)
-                  .Union(DTE.Solution.Projects.Cast<Project>())
-                  .Where(p => { try { return !string.IsNullOrEmpty(p.FullName); } catch { return false; } });
         }
 
         private static IEnumerable<Project> GetChildProjects(Project parent)
@@ -175,31 +107,6 @@ namespace TaskRunnerExtension
                     .SelectMany(p => GetChildProjects(p.SubProject));
         }
 
-        public static bool IsSolutionLoaded()
-        {
-            if (DTE.Solution == null)
-                return false;
-
-            return GetAllProjects().Any();
-        }
-
-        public static Project GetActiveProject()
-        {
-            try
-            {
-                Array activeSolutionProjects = DTE.ActiveSolutionProjects as Array;
-
-                if (activeSolutionProjects != null && activeSolutionProjects.Length > 0)
-                    return activeSolutionProjects.GetValue(0) as Project;
-            }
-            catch (Exception ex)
-            {
-                Logger.Log("Error getting the active project" + ex);
-            }
-
-            return null;
-        }
-
         public static bool DeleteFileFromProject(string file)
         {
             ProjectItem item = DTE.Solution.FindProjectItem(file);
@@ -214,7 +121,7 @@ namespace TaskRunnerExtension
             }
             catch (Exception ex)
             {
-                Logger.Log(ex);
+                System.Diagnostics.Trace.Write(ex);
                 return false;
             }
         }

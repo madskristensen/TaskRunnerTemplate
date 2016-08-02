@@ -5,6 +5,11 @@
     <Extern href="vsshlids.h"/>
     <Include href="KnownImageIds.vsct"/>
 
+    <!--
+        This file contains the buttons you wish to add to the Task Runner Explorer command bar.
+        If no buttons are needed, you can delete this file.
+    -->
+
     <Commands package="guidVSPackage">
         <Buttons>
             <Button guid="guidVSPackageCmdSet" id="cmdVerbose" priority="0x0100" type="Button">
@@ -24,10 +29,15 @@
         <!-- This is the package guid. -->
         <GuidSymbol name="guidVSPackage" value="{68f5ee87-8633-4f4c-8849-fdb6e22ef84a}" />
 
+        <!--
+            This guid and hex value are used to register the command/button inside the TaskRunnerProvider.cs file
+            Add as many <IDSymbol> elements inside <GuidSymbol> as you need buttons.
+        -->
         <GuidSymbol name="guidVSPackageCmdSet" value="{b13c1717-1c31-4be2-9798-7d734b9fd445}">
             <IDSymbol name="cmdVerbose" value="0x0100" />
         </GuidSymbol>
 
+        <!-- Don't change this. It holds the correct GUIDs for the Task Runner Explorer command bar -->
         <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
             <IDSymbol name="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" value="0x2002" />
         </GuidSymbol>

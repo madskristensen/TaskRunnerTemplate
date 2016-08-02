@@ -31,11 +31,6 @@ namespace TaskRunnerExtension
             get { return _hierarchy; }
         }
 
-        public void Dispose()
-        {
-            // Nothing to dispose
-        }
-
         public string LoadBindings(string configPath)
         {
             string bindingPath = configPath + ".bindings";
@@ -103,7 +98,7 @@ namespace TaskRunnerExtension
             }
             catch (Exception ex)
             {
-                Logger.Log(ex);
+                System.Diagnostics.Trace.Write(ex);
                 return false;
             }
         }
@@ -114,8 +109,8 @@ namespace TaskRunnerExtension
 
             IVsHierarchy vsHierarchy;
             uint itemId, docCookie;
-            VsShellUtilities.GetRDTDocumentInfo(
-                serviceProvider, documentPath, out vsHierarchy, out itemId, out persistDocData, out docCookie);
+            VsShellUtilities.GetRDTDocumentInfo(serviceProvider, documentPath, out vsHierarchy, out itemId, out persistDocData, out docCookie);
+
             if (persistDocData != null)
             {
                 int isDirty;
@@ -125,6 +120,10 @@ namespace TaskRunnerExtension
 
             return false;
         }
-    }
 
+        public void Dispose()
+        {
+            // Nothing to dispose
+        }
+    }
 }

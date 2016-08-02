@@ -8,6 +8,10 @@ using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace TaskRunnerExtension
 {
+    /// <summary>
+    /// This class will be called by Visual Studio automatically when a project
+    /// is being opened that contains myconfig.json in the project- or solution root folder.
+    /// </summary>
     [TaskRunnerExport("myconfig.json")]
     public class TaskRunnerProvider : ITaskRunner
     {
@@ -19,6 +23,10 @@ namespace TaskRunnerExtension
             _icon = new BitmapImage(new Uri(@"pack://application:,,,/TaskRunnerExtension;component/Resources/logo.png"));
         }
 
+        /// <summary>
+        ///  This is where buttons from the VSCommandTable.vsct file are registered.
+        ///  The string parameter is any argument that must be passed on to the task when it's enabled.
+        /// </summary>
         private void InitializeNpmTaskRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
@@ -47,6 +55,12 @@ namespace TaskRunnerExtension
                 return new TaskRunnerConfig(context, hierarchy, _icon);
             });
         }
+
+        /// <summary>
+        /// Construct any task hierarchy that you need.
+        /// Task Runner Explorer will automatically have node.exe and npm.cmd on the PATH
+        /// and you can control that in Tools -> Options -> Projects & Solutions -> External Web Tools
+        /// </summary>
         private ITaskRunnerNode LoadHierarchy(string configPath)
         {
             string cwd = Path.GetDirectoryName(configPath);
