@@ -17,6 +17,7 @@ See the [change log](CHANGELOG.md) for changes and road map.
 - A great starting point
 - Easy to customize
 - Demonstrates best practices
+- Opens a welcome page to get you started
 
 Here's a screen shot of what the project template contains:
 
