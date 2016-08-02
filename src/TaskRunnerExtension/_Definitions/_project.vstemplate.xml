@@ -1,0 +1,26 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+    <TemplateData>
+        <Name>Task Runner Explorer Extension</Name>
+        <Description>A project template for creating Task Runner Explorer extensions.</Description>
+        <DefaultName>MyExtension</DefaultName>
+
+        <ProjectType>CSharp</ProjectType>
+        <ProjectSubType></ProjectSubType>
+        <CreateInPlace>true</CreateInPlace>
+        <PromptForSaveOnCreation>true</PromptForSaveOnCreation>
+
+        <SortOrder>1000</SortOrder>
+        <CreateNewFolder>true</CreateNewFolder>
+        <ProvideDefaultName>true</ProvideDefaultName>
+        <LocationField>Enabled</LocationField>
+        <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+
+        <Icon>_Definitions\template-icon.png</Icon>
+        <TemplateID>taskrunnerextension</TemplateID>
+        <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    </TemplateData>
+    <TemplateContent>
+        <Project TargetFileName="$rootnamespace$.csproj" File="TaskRunnerExtension.csproj" ReplaceParameters="true">
+        </Project>
+    </TemplateContent>
+</VSTemplate>

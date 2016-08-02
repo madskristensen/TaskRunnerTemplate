@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="e3f7a0d3-f521-4da8-8fa3-e3a07702328a" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
+        <DisplayName>Task Runner Project Template</DisplayName>
+        <Description xml:space="preserve">A project template for building Task Runner Explorer extensions for Visual Studio.</Description>
+        <MoreInfo>https://github.com/madskristensen/TaskRunnerTemplate</MoreInfo>
+        <License>Resources/LICENSE</License>
+        <ReleaseNotes>https://github.com/madskristensen/TaskRunnerTemplate/blob/master/CHANGELOG.md</ReleaseNotes>
+        <Icon>Resources\Icon.png</Icon>
+        <PreviewImage>Resources\Preview.png</PreviewImage>
+        <Tags>Task Runner Explorer, extension, VSIX</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0]" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+        <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="[14.0]" />
+    </Dependencies>
+    <Assets>
+        <!--<Asset Type="Microsoft.VisualStudio.ItemTemplate" Path="Output\ItemTemplates" />-->
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" Path="Output\ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+</PackageManifest>
