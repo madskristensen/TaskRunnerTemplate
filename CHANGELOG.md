@@ -1,6 +1,6 @@
 # Road map
 
-- [ ] Nothing yet...
+- [ ] More in-code comments on how to customize
 
 Features that have a checkmark are complete and available for
 download in the

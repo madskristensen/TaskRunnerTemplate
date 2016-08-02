@@ -14,8 +14,6 @@ See the [change log](CHANGELOG.md) for changes and road map.
 
 ## Features
 
-this is great
-
 - A great starting point
 - Easy to customize
 - Demonstrates best practices
