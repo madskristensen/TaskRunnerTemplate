@@ -2,23 +2,19 @@
 using System.IO;
 using System.Text;
 using System.Windows.Media;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
+using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace TaskRunnerExtension
 {
     class TaskRunnerConfig : ITaskRunnerConfig
     {
-        private ImageSource _icon;
-        private ITaskRunnerCommandContext _context;
+        private static ImageSource _icon = new BitmapImage(new Uri(@"pack://application:,,,/TaskRunnerExtension;component/Resources/logo.png"));
         ITaskRunnerNode _hierarchy;
 
-        public TaskRunnerConfig(ITaskRunnerCommandContext context, ITaskRunnerNode hierarchy, ImageSource icon)
+        public TaskRunnerConfig(ITaskRunnerNode hierarchy)
         {
-            _context = context;
             _hierarchy = hierarchy;
-            _icon = icon;
         }
 
         public ImageSource Icon
@@ -82,18 +78,6 @@ namespace TaskRunnerExtension
                     ProjectHelpers.AddNestedFile(configPath, bindingPath);
                 }
 
-                IVsPersistDocData persistDocData;
-                if (!IsDocumentDirty(configPath, out persistDocData) && persistDocData != null)
-                {
-                    int cancelled;
-                    string newName;
-                    persistDocData.SaveDocData(VSSAVEFLAGS.VSSAVE_SilentSave, out newName, out cancelled);
-                }
-                else if (persistDocData == null)
-                {
-                    new FileInfo(configPath).LastWriteTime = DateTime.Now;
-                }
-
                 return true;
             }
             catch (Exception ex)
@@ -101,24 +85,6 @@ namespace TaskRunnerExtension
                 System.Diagnostics.Trace.Write(ex);
                 return false;
             }
-        }
-
-        public static bool IsDocumentDirty(string documentPath, out IVsPersistDocData persistDocData)
-        {
-            var serviceProvider = new ServiceProvider((Microsoft.VisualStudio.OLE.Interop.IServiceProvider)ProjectHelpers.DTE);
-
-            IVsHierarchy vsHierarchy;
-            uint itemId, docCookie;
-            VsShellUtilities.GetRDTDocumentInfo(serviceProvider, documentPath, out vsHierarchy, out itemId, out persistDocData, out docCookie);
-
-            if (persistDocData != null)
-            {
-                int isDirty;
-                persistDocData.IsDocDataDirty(out isDirty);
-                return isDirty == 1;
-            }
-
-            return false;
         }
 
         public void Dispose()

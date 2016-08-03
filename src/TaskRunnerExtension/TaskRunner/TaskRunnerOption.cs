@@ -16,15 +16,10 @@ namespace TaskRunnerExtension
         }
 
         public string Command { get; set; }
-
         public bool Enabled { get; set; }
-
         public bool Checked { get; set; }
-
         public Guid Guid { get; }
-
         public uint Id { get; }
-
         public string Name { get; }
     }
 }

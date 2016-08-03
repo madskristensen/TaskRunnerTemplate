@@ -15,13 +15,7 @@ namespace TaskRunnerExtension
     [TaskRunnerExport("myconfig.json")]
     public class TaskRunnerProvider : ITaskRunner
     {
-        private ImageSource _icon;
         private List<ITaskRunnerOption> _options = null;
-
-        public TaskRunnerProvider()
-        {
-            _icon = new BitmapImage(new Uri(@"pack://application:,,,/TaskRunnerExtension;component/Resources/logo.png"));
-        }
 
         /// <summary>
         ///  This is where buttons from the VSCommandTable.vsct file are registered.
@@ -52,7 +46,7 @@ namespace TaskRunnerExtension
 
             return await Task.Run(() =>
             {
-                return new TaskRunnerConfig(context, hierarchy, _icon);
+                return new TaskRunnerConfig(hierarchy);
             });
         }
 
