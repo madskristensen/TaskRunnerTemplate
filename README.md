@@ -19,6 +19,8 @@ See the [change log](CHANGELOG.md) for changes and road map.
 - Demonstrates best practices
 - Opens a welcome page to get you started
 
+![Project dialog](art\project-dialog.png)
+
 Here's a screen shot of what the project template contains:
 
 ![Solution Explorer](art/solution-explorer.png)
