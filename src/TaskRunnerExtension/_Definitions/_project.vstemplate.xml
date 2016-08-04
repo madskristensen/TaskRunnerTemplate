@@ -2,7 +2,7 @@
     <TemplateData>
         <Name>Task Runner Explorer Extension</Name>
         <Description>A project template for creating Task Runner Explorer extensions.</Description>
-        <DefaultName>VSIXProject</DefaultName>
+        <DefaultName>TaskRunnerProject</DefaultName>
 
         <ProjectType>CSharp</ProjectType>
         <ProjectSubType></ProjectSubType>
