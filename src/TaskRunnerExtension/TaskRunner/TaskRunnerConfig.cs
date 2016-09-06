@@ -9,12 +9,13 @@ namespace TaskRunnerExtension
 {
     class TaskRunnerConfig : ITaskRunnerConfig
     {
-        private static ImageSource _icon = new BitmapImage(new Uri(@"pack://application:,,,/TaskRunnerExtension;component/Resources/logo.png"));
-        ITaskRunnerNode _hierarchy;
+        private ImageSource _icon;
+        private ITaskRunnerNode _hierarchy;
 
-        public TaskRunnerConfig(ITaskRunnerNode hierarchy)
+        public TaskRunnerConfig(ITaskRunnerNode hierarchy, ImageSource icon)
         {
             _hierarchy = hierarchy;
+            _icon = icon;
         }
 
         public ImageSource Icon

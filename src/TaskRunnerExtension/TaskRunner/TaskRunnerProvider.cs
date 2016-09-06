@@ -15,6 +15,7 @@ namespace TaskRunnerExtension
     [TaskRunnerExport("myconfig.json")]
     public class TaskRunnerProvider : ITaskRunner
     {
+        private static ImageSource _icon = new BitmapImage(new Uri(@"pack://application:,,,/TaskRunnerExtension;component/Resources/logo.png"));
         private List<ITaskRunnerOption> _options = null;
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace TaskRunnerExtension
 
             return await Task.Run(() =>
             {
-                return new TaskRunnerConfig(hierarchy);
+                return new TaskRunnerConfig(hierarchy, _icon);
             });
         }
 
