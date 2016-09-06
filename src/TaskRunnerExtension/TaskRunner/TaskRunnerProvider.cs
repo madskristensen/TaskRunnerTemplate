@@ -21,19 +21,14 @@ namespace TaskRunnerExtension
         ///  This is where buttons from the VSCommandTable.vsct file are registered.
         ///  The string parameter is any argument that must be passed on to the task when it's enabled.
         /// </summary>
-        private void InitializeNpmTaskRunnerOptions()
-        {
-            _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidVSPackageCmdSet, false, " (verbose)"));
-        }
-
         public List<ITaskRunnerOption> Options
         {
             get
             {
                 if (_options == null)
                 {
-                    InitializeNpmTaskRunnerOptions();
+                    _options = new List<ITaskRunnerOption>();
+                    _options.Add(new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidVSPackageCmdSet, false, " (verbose)"));
                 }
 
                 return _options;
